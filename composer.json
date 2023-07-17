@@ -1,0 +1,15 @@
+{
+    "name": "jeremy/site",
+    "description": "projet5",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "ame"
+        }
+    ],
+    "require": {}
+}

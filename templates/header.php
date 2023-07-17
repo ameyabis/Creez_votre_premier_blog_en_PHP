@@ -6,4 +6,5 @@
         <li class="navbar-li" style="float:right"><a class="navbar-a" href="#contact">Contact</a></li>
     </ul>
     <img class="img_header" src="./src/image/f1headercut.png" alt="Monoplace F1 de Max Verstappen sous la pluie">
+    <h1 class="navbar-titre">BIENVENUE</h1>
 </nav>

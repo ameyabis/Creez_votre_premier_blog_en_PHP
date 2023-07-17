@@ -3,6 +3,10 @@
     font-family: 'Roboto', sans-serif;
 }
 
+h1 {
+    font-family: 'Work Sans', sans-serif;
+}
+
 /*      NAVBAR      */
 .navbar {
     list-style-type: none;
@@ -10,6 +14,7 @@
     overflow: hidden;
     width: 100vw;
     position: absolute;
+    z-index: 1;
 }
 
 .navbar-li {
@@ -28,12 +33,22 @@
     background-color: #213269;
 }
 
-.navbar-li :hover{
+.navbar-li :hover {
     background-color: #fc031a;
 }
 
 .img_header {
     width: 100vw;
+    position: absolute;
+    z-index: 0;
+}
+
+.navbar-titre{
+    position: relative;
+    color: #fdd525;
+    display: flex;
+    justify-content: center;
+    height: 50%;
 }
 
 /*      FOOTER        */
