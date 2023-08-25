@@ -8,7 +8,7 @@ h1 {
 }
 
 /*      NAVBAR      */
-.navbar {
+/* .navbar {
     list-style-type: none;
     padding-inline-start: 0;
     overflow: hidden;
@@ -49,10 +49,10 @@ h1 {
     display: flex;
     justify-content: center;
     height: 50%;
-}
+} */
 
 /*      FOOTER        */
-footer {
+/* footer {
     background-color: #ECECEC;
     display: flex;
     flex-direction: row;
@@ -71,4 +71,4 @@ footer {
 .social-a {
     text-decoration: none;
     color: #111;
-}
+} */

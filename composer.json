@@ -11,5 +11,7 @@
             "name": "ame"
         }
     ],
-    "require": {}
+    "require": {
+        "symfony/twig-bridge": "^6.3"
+    }
 }
