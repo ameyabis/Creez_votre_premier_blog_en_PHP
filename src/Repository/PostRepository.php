@@ -62,6 +62,9 @@ class PostRepository
         return $posts;
     }
 
+    /**
+     * @return Post[]
+     */
     public function getLastPost(): array
     {
         $getLimitPost = $this->db->getConnection()->prepare('SELECT * FROM Post ORDER BY id DESC LIMIT 3');
@@ -84,18 +87,31 @@ class PostRepository
         return $posts;
     }
 
-    public function createPost()
+    public function createPost($post): void
     {
-        // $form = $_POST
-        $title = "New post";
-        $chapo = "Ceci est un test de création de Post";
-        $description = "Lorem Ipsum";
+        $title = $post->getTitle();
+        $chapo = $post->getChapo();
+        $description = $post->getDescription();
+        $image = $post->getImage();
 
-        $post = new Post();
-        $post->setTitle($title);
-        $post->setChapo($chapo);
-        $post->setDescription($description);
+        var_dump($title, $chapo, $description, $image);
 
-        $insertData = $this->db->getConnection()->prepare('');
+        $sql = "INSERT INTO Post (title, description, image, chapo) VALUES (:title, :description, :image, :chapo)";
+        $stmt = $this->db->getConnection()->prepare($sql);
+        $stmt->bindValue(':title', $title);
+        $stmt->bindValue(':description', $description);
+        $stmt->bindValue(':image', $image);
+        $stmt->bindValue(':chapo', $chapo);
+
+        if ($stmt->execute())
+        {
+            echo 'Insertion réussie !';
+        } else {
+            echo 'Erreur lors de l\'insertion';
+        }
+        // $insertData = $this
+        //     ->db->getConnection()
+        //     ->prepare('INSERT INTO Post (title, description, image, chapo) 
+        //                 VALUES (:title, :description, :image, :chapo) ');
     }
 }

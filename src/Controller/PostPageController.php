@@ -40,7 +40,6 @@ class PostPageController
 
     public function showFormCreate()
     {
-        var_dump($_POST);
         if (count($_POST) !== 0) {
             $post = new Post();
 
@@ -48,6 +47,9 @@ class PostPageController
             $post->setChapo($_POST["chapo"]);
             $post->setDescription($_POST["description"]);
             $post->setImage($_POST["image"]);
+
+            $postRepository = new PostRepository();
+            $postRepository->createPost($post);
         } else {
             $this->twig->display('pages/createPost.html.twig', [
                 "root_directory" => Router::ROOT_DIRECTORY,
