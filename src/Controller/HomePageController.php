@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Model\User;
+use App\Repository\PostRepository;
 use App\router\Router;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
@@ -16,14 +17,12 @@ class HomePageController
     }
     public function showHomePage()
     {
-        $this->twig->display('pages/homepage.html.twig', ["root_directory" => Router::ROOT_DIRECTORY]);
-        // $user = new User();
-        // $user->firstName = "Jeremy";
-        // $user->lastName = "Test";
-        // $user2 = new User();
-        // $user2->firstName = "test2";
-        // $user2->lastName = "jeremy2";
-        // var_dump($this->twig);
-        // die;
+        $postRepository = new PostRepository();
+        $postArray = $postRepository->getLastPost();
+
+        $this->twig->display('pages/homepage.html.twig', [
+            "root_directory" => Router::ROOT_DIRECTORY,
+            "posts" => $postArray,
+        ]);
     }
 }

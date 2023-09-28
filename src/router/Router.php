@@ -1,16 +1,18 @@
 <?php
 namespace App\router;
 
-use Twig\Loader\FilesystemLoader;
+use App\Config\connectBDD;
 
 require __DIR__ . "/../config/autoload.php";
+use Twig\Loader\FilesystemLoader;
 use App\Controller\HomePageController;
-use App\Controller\ArticlePageController;
+use App\Controller\PostPageController;
 
 class Router
 {
     const ROOT_DIRECTORY = "/projet5/site";
     public FilesystemLoader $loader;
+    public connectBDD $db;
     public function __construct()
     {
         $this->loader = new FilesystemLoader('templates');
@@ -20,8 +22,9 @@ class Router
     {
         if (isset($_GET["page"]) && $_GET["page"] !== "") {
             match ($_GET["page"]) {
-                'article' => $this->getArticlePageController(),
-                'articles' => $this->getArticlesPageController(),
+                'post' => $this->getPostPageController(),
+                'posts' => $this->getPostsPageController(),
+                'create' => $this->getCreatePostPage(),
             // default => $this->get404Controller(),
             };
         } else {
@@ -29,16 +32,21 @@ class Router
         }
     }
 
-    public function getArticlePageController(): void
+    public function getPostPageController(): void
     {
-        $articleController = new ArticlePageController($this->loader);
-        $articleController->showArticlePage();
+        $id = isset($_GET["id"]) ? intval($_GET["id"]) : null;
+
+        if ($id === null || $id === 0) {
+            $this->getHomePageController();
+        }
+        $postController = new PostPageController($this->loader);
+        $postController->showPostPage($id);
     }
 
-    public function getArticlesPageController(): void
+    public function getPostsPageController(): void
     {
-        $articleController = new ArticlePageController($this->loader);
-        $articleController->showArticlesPage();
+        $PostController = new PostPageController($this->loader);
+        $PostController->showPostsPage();
     }
 
     public function getHomePageController(): void
@@ -47,8 +55,14 @@ class Router
         $pagesController->showHomePage();
     }
 
-    public function goToLogin()
+    public function createPostAdmin(): void
     {
 
+    }
+
+    public function getCreatePostPage(): void
+    {
+        $createController = new PostPageController($this->loader);
+        $createController->showFormCreate();
     }
 }
