@@ -1,0 +1,19 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<form method="post" action="?page=modify&id={{ post.id }}">
+    <label for="title">Titre :</label>
+    <input type="text" id="title" name="title" value="{{ post.title }}" required>
+
+    <label for="chapo">Chapo :</label>
+    <input type="text" id="chapo" name="chapo" value="{{ post.chapo }}" required>
+
+    <label for="description">Description :</label>
+    <input type="text" id="description" name="description" value="{{ post.description }}" required>
+
+    <label for="image">Image :</label>
+    <input type="file" id="image" name="image" value="{{ post.image }}" accept="image/png, image/jpeg, image/jpg" required>
+
+    <input type="submit" value="Modifier">
+</form>    
+{% endblock body %}

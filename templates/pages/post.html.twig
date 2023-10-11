@@ -9,9 +9,10 @@
                 <h1>{{ post.title }}</h1>
                 <h3>{{ post.chapo }}</h3>
                 <p>{{ post.description }}</p>
+                <p>{{ post.dateTime |date('d-m-Y') }}</p>
             </div>
             <div class="col my-4">
-                <img class="img-fluid" src="{{ root_directory~'/src/image/f1header.jpeg' }}" alt="">
+                <img class="img-fluid" src="{{ root_image~post.image }}" alt="">
             </div>
         </div>
     </div>

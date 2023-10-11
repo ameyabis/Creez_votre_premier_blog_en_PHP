@@ -22,6 +22,7 @@ class HomePageController
 
         $this->twig->display('pages/homepage.html.twig', [
             "root_directory" => Router::ROOT_DIRECTORY,
+            "root_image" => Router::ROOT_IMAGE,
             "posts" => $postArray,
         ]);
     }

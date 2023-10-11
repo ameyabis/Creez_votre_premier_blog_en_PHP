@@ -1,7 +1,7 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-<form method="post" action="?page=create">
+<form method="post" action="?page=create" enctype="multipart/form-data">
     <label for="title">Titre :</label>
     <input type="text" id="title" name="title" required>
 
@@ -9,7 +9,7 @@
     <input type="text" id="chapo" name="chapo" >
 
     <label for="description">Description :</label>
-    <input type="text" id="description" name="description" >
+    <textarea id="description" name="description" rows="5" cols="33" ></textarea>
 
     <label for="image">Image :</label>
     <input type="file" id="image" name="image" accept="image/png, image/jpeg, image/jpg">
