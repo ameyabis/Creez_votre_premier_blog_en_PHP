@@ -1,0 +1,31 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<section>
+    <div class="container my-5 py-5">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                <div class="card text-dark">
+                    <div class="card-body p-4">
+                        <h4 for="comment">Commentaires</h4>
+                        {% for comment in comments %}
+                        <div class="d-flex flex-start mb-3" style="background-color: #35415E;">
+                            <div class="px-5 py-3">
+                                <div class="d-flex align-items-center mb-3">
+                                    <h6 class="fw-bold mb-1">User Name</h6>
+                                    <a href="?page=validateComment&id={{ comment.id }}&idPost={{ comment.idPost }}" class="link-muted"><i class="fas fa-circle-check ms-2"></i></a>
+                                    <a href="?page=deleteComment&id={{ comment.id }}&idPost={{ comment.idPost }}" class="link-muted"><i class="fas fa-trash ms-2"></i></a>
+                                </div>
+                                <p class="mb-0">
+                                    {{ comment.content }}
+                                </p>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -3,7 +3,12 @@
 {% block body %}
 
 <body>
-    <div class="container-fluid d-flex">
+    {# {% if is defined %}
+    <div class="alert alert-success" role="alert">
+        {{ message }}
+    </div>
+    {% endif %} #}
+    <div class="container-fluid d-flex justify-content-center">
         <div class="row">
             <div class="col my-4 d-flex flex-column justify-content-center align-items-center">
                 <h1>{{ post.title }}</h1>
@@ -15,6 +20,41 @@
                 <img class="img-fluid" src="{{ root_image~post.image }}" alt="">
             </div>
         </div>
+    </div>
+    <div class="column">
+        <section>
+            <div class="container my-5 py-5">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-md-12 col-lg-10">
+                        <div class="card text-dark">
+                            <div class="card-body p-4">
+                                <div class="form-group">
+                                    <form method="post" action="?page=post&id={{ post.id }}">
+                                        <label for="comment">Commentaires</label>
+                                        <textarea class="form-control my-1" id="comment" name="comment" id="comment"
+                                            rows="3"></textarea>
+
+                                        <button type="submit" class="btn btn-primary mb-3">Poster</button>
+                                    </form>
+                                </div>
+                                {% for comment in comments %}
+                                <div class="d-flex flex-start mb-3" style="background-color: #35415E;">
+                                    <div class="px-5 py-3">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <h6 class="fw-bold mb-1">User Name</h6>
+                                        </div>
+                                        <p class="mb-0">
+                                            {{ comment.content }}
+                                        </p>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 </body>
 

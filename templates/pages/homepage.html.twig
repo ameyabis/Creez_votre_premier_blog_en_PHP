@@ -12,19 +12,23 @@ Jérémy.G - Accueil
 {% endblock %}
 
 {% block body %}
+
 <body>
     <section class="py-3">
         <div class="container">
             <h1 class="d-flex justify-content-center">Bienvenue</h1>
-            <div class="d-flex">
+            <div class="d-flex align-items-center">
                 <p class="mx-3 text-justify">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, saepe? Magnam natus ullam nobis
-                    similique
-                    magni nihil dolorum doloribus explicabo unde. Provident, error laboriosam. Reiciendis, temporibus.
-                    Quidem
-                    harum sequi beatae.
+                    Bienvenue sur ce site, c'est un exercice pour une formation mais vous pourrez en savoir plus sur moi
+                    en naviguant sur ce site. Je suis un jeune développeur, et je fais cela depuis 4 ans, je suis
+                    toujours en formation pour me perfectionner. Si tu en sais toujours passez sur moi, je te laisse me
+                    contacter dans la section contact disponible dans le footer. J'ai plein de projet en tête donc reste
+                    connecté, je les posterai sur ce site d'ici peut. Tu ne risque pas d'etre déçu. Je suis très
+                    investie et je cherche tous les jours à m'améliorer, donc si tu trouve que je peux faire mieux
+                    n'hésite pas à me le dire (ce site n'est pas un exemple :D)
                 </p>
-                <img class="image-pres img-fluid" src="{{ root_directory~'/src/image/presentation/depart_singagour.jpg' }}" style="width: 50%;">
+                <img class="image-pres img-fluid"
+                    src="{{ root_directory~'/src/image/presentation/depart_singagour.jpg' }}" style="width: 50%;">
             </div>
         </div>
     </section>
@@ -40,8 +44,8 @@ Jérémy.G - Accueil
                             <h2 class="card-title d-flex justify-content-center">{{ post.title }}</h2>
                             <h3 class="card-subtitle d-flex justify-content-center">{{ post.chapo }}</h3>
                             <p class="card-text text-justify">{{ post.description }}</p>
-                            <a href="?page=post&id={{ post.id }}"
-                                class="btn d-flex justify-content-center">Go to post</a>
+                            <a href="?page=post&id={{ post.id }}" class="btn d-flex justify-content-center">Go to
+                                post</a>
                         </div>
                     </div>
                 </div>
@@ -49,18 +53,18 @@ Jérémy.G - Accueil
             </div>
         </div>
     </section>
-    <section class=" py-3">
+    <section class="mb-5 py-3">
         <div class="container">
             <h1 class="d-flex justify-content-center">Présentation</h1>
-            <div class="d-flex">
+            <div class="d-flex align-items-center">
                 <p class="mx-3 text-justify">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, saepe? Magnam natus ullam nobis
-                    similique
-                    magni nihil dolorum doloribus explicabo unde. Provident, error laboriosam. Reiciendis, temporibus.
-                    Quidem
-                    harum sequi beatae.
+                    Salut, voila je me présente un peu plus ici.
+                    Je m'appelle Jérémy, et je suis développeur depuis 4 ans, j'ai fait deux formations chez
+                    OpenClassroom, une en Javascript et une autre en PHP / Symfony. Et je recommande fortement ces
+                    formation pour n'importe qui, en terme de contenu et de suivi.
                 </p>
-                <img class="image-pres" src="{{ root_directory~'/src/image/presentation/img-pres.jpeg' }}" alt="" style="width: 50%;">
+                <img class="image-pres" src="{{ root_directory~'/src/image/presentation/img-pres.jpeg' }}" alt=""
+                    style="width: 50%;">
             </div>
         </div>
     </section>

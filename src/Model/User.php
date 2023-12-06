@@ -9,8 +9,8 @@ class User
     private string $lastName;
     private string $userName;
     private string $email;
-    private string $picture;
-    private int $roles;
+    private string $password;
+    private ?bool $isAdmin = false;
 
     public function getId(): int
     {
@@ -20,6 +20,7 @@ class User
     public function setId(int $id): User
     {
         $this->id = $id;
+        
         return $this;
     }
 
@@ -31,6 +32,7 @@ class User
     public function setFirstName(string $firstName): User
     {
         $this->firstName = $firstName;
+
         return $this;
     }
 
@@ -42,6 +44,7 @@ class User
     public function setLastName(string $lastName): User
     {
         $this->lastName = $lastName;
+
         return $this;
     }
 
@@ -53,6 +56,7 @@ class User
     public  function setUserName(string $userName): User
     {
         $this->userName = $userName;
+
         return $this;
     }
 
@@ -64,19 +68,31 @@ class User
     public function setEmail(string $email): User
     {
         $this->email = $email;
+
         return $this;
     }
 
-    public function getPicture(): string
+    public function getPassword(): string
     {
-        return $this->picture;
+        return $this->password;
     }
 
-    public function setPicture(string $picture): User
+    public function setPassword(string $password): User
     {
-        $this->picture = $picture;
+        $this->password = $password;
+
         return $this;
     }
 
-    
+    public function getIsAdmin(): ?bool
+    {
+        return $this->isAdmin;
+    }
+
+    public function setIsAdmin(int $isAdmin): User
+    {
+        $this->isAdmin = $isAdmin;
+
+        return $this;
+    }
 }

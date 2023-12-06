@@ -8,19 +8,31 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{ root_directory }}" style="color: #FFF;">Accueil</a>
+                    <a class="nav-link active" aria-current="page" href="{{ root_directory }}"
+                        style="color: #FFF;">Accueil</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="?page=posts" style="color: #FFF;">Posts</a>
                 </li>
+                {% if isAdmin == true %}
                 <li class="nav-item">
                     <a class="nav-link" href="?page=create" style="color: #FFF;">Créer post</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="?page=comment" style="color: #FFF;">Comment</a>
+                </li>
+                {% endif %}
             </ul>
+            {% if session is empty %}
             <ul class="navbar-nav">
-                <a class="nav-link" href="" style="color: #FFF;">Inscription</a>
-                <a class="nav-link" href="" style="color: #FFF;">Connexion</a>
+                <a class="nav-link" href="?page=registerForm" style="color: #FFF;">Inscription</a>
+                <a class="nav-link" href="?page=loginForm" style="color: #FFF;">Connexion</a>
             </ul>
+            {% else %}
+            <ul class="navbar-nav">
+                <a class="nav-link" href="?page=logout" style="color: #FFF;">Deconnexion</a>
+            </ul>
+            {% endif %}
         </div>
     </div>
 </nav>

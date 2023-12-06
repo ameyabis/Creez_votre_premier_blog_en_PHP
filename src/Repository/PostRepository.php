@@ -19,9 +19,8 @@ class PostRepository
     public function getOnePost(int $id): Post
     {
         $getData = $this->db->getConnection()->prepare('SELECT * FROM Post WHERE id = :id');
-        $getData->execute([':id' => $id]);
+        $getData->execute(['id' => $id]);
         $postData = $getData->fetch();
-        // var_dump($postData);die;
 
         $post = new Post();
         $post->setId($id);
@@ -29,10 +28,8 @@ class PostRepository
         $post->setDescription($postData["description"]);
         $post->setImage($postData["image"]);
         $post->setDateTime(\DateTime::createFromFormat('Y-m-j H:i:s', $postData["dateTime"]));
-        // $post->setDateTime($postData["dateTime"]);
         $post->setChapo($postData["chapo"]);
         $post->setLastUpdate(\DateTime::createFromFormat('Y-m-j H:i:s', $postData["lastUpdate"]));
-        // $post->setLastUpdate($postData["lastUpdate"]);
 
         return $post;
     }
@@ -91,7 +88,7 @@ class PostRepository
         return $posts;
     }
 
-    public function createPost(Post $post): void
+    public function createPost(Post $post): string
     {
         $sql = "INSERT INTO Post (title, description, image, chapo, dateTime, lastUpdate) 
                 VALUES (:title, :description, :image, :chapo, NOW(), NOW())";
@@ -102,13 +99,17 @@ class PostRepository
         $stmt->bindValue(':chapo', $post->getChapo());
 
         if ($stmt->execute()) {
-            echo 'Insertion réussie !';
+            $message = 'Insertion réussie !';
+
+            return $message;
         } else {
-            echo 'Erreur lors de l\'insertion';
+            $message = 'Erreur lors de l\'insertion';
+
+            return $message;
         }
     }
 
-    public function updatePost(Post $post, int $id): void
+    public function updatePost(Post $post, int $id): string
     {
         $sql = "UPDATE Post 
                 SET title = :title, description = :description, image = :image, chapo = :chapo, lastUpdate = NOW()
@@ -121,13 +122,17 @@ class PostRepository
         $stmt->bindValue(':chapo', $post->getChapo());
 
         if ($stmt->execute()) {
-            echo 'Modification réussie !';
+            $message = 'Modification réussie !';
+
+            return $message;
         } else {
-            echo 'Erreur lors de l\'insertion';
+            $message = 'Erreur lors de l\'insertion';
+
+            return $message;
         }
     }
 
-    public function deletePost(int $id): void
+    public function deletePost(int $id): string
     {
         $sql = "DELETE FROM Post
                 WHERE id = :id";
@@ -135,9 +140,13 @@ class PostRepository
         $stmt->bindValue(':id', $id);
 
         if ($stmt->execute()) {
-            echo 'Suppression terminé';
+            $message = 'Suppression terminé';
+
+            return $message;
         } else {
-            echo 'Erreur lors de la suppression';
+            $message = 'Erreur lors de la suppression';
+
+            return $message;
         }
     }
 }

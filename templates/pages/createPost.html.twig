@@ -1,19 +1,23 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-<form method="post" action="?page=create" enctype="multipart/form-data">
-    <label for="title">Titre :</label>
-    <input type="text" id="title" name="title" required>
+<div class="container">
+    <div class="d-flex col-12 justify-content-center my-5">
+        <form method="post" class="d-flex flex-column" action="?page=create" enctype="multipart/form-data">
+            <label for="title">Titre :</label>
+            <input class="my-2 form-control" type="text" id="title" name="title" required>
 
-    <label for="chapo">Chapo :</label>
-    <input type="text" id="chapo" name="chapo" >
+            <label for="chapo">Chapo :</label>
+            <input class="my-2 form-control" type="text" id="chapo" name="chapo">
 
-    <label for="description">Description :</label>
-    <textarea id="description" name="description" rows="5" cols="33" ></textarea>
+            <label for="description">Description :</label>
+            <textarea class="my-2 form-control" id="description" name="description" rows="5" cols="33"></textarea>
 
-    <label for="image">Image :</label>
-    <input type="file" id="image" name="image" accept="image/png, image/jpeg, image/jpg">
+            <label for="image">Image :</label>
+            <input class="my-2 form-control" type="file" id="image" name="image" accept="image/png, image/jpeg, image/jpg">
 
-    <input type="submit" value="Valider">
-</form>    
+            <input type="submit" class="btn my-2" value="Valider">
+        </form>
+    </div>
+</div>
 {% endblock body %}

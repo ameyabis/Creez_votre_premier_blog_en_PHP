@@ -1,0 +1,18 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+<div class="container">
+    <div class="d-flex col-12 justify-content-center my-5">
+        <form class="d-flex flex-column" method="post" action="?page=sendContact" enctype="multipart/form-data">
+            <label for="title">Sujet: </label>
+            <input class="my-2 form-control" type="text" id="title" name="title" required>
+
+            <label for="message">Message: </label>
+            <textarea class="my-2 form-control" type="textarea" id="message" name="message" rows="5" cols="33"></textarea>
+
+            <input class="btn" type="submit" value="Valider">
+        </form>
+    </div>
+</div>
+{% endblock %}

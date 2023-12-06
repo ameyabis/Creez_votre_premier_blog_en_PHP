@@ -7,6 +7,7 @@ class Comment
     private int $id;
     private string $content;
     private string $statusComment;
+    private int $idPost;
 
     public function getId(): int
     {
@@ -24,7 +25,7 @@ class Comment
         return $this->content;
     }
 
-    public function setTitle(string $content): Comment
+    public function setContent(string $content): Comment
     {
         $this->content = $content;
         return $this;
@@ -35,9 +36,20 @@ class Comment
         return $this->statusComment;
     }
 
-    public function setDescription(string $statusComment): Comment
+    public function setStatusComment(string $statusComment): Comment
     {
         $this->statusComment = $statusComment;
+        return $this;
+    }
+
+    public function getIdPost(): string
+    {
+        return $this->idPost;
+    }
+
+    public function setIdPost(int $idPost): Comment
+    {
+        $this->idPost = $idPost;
         return $this;
     }
 }

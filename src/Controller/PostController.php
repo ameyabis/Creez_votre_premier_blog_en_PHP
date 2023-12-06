@@ -1,31 +1,44 @@
 <?php
 namespace App\Controller;
 
+use App\Model\Comment;
 use App\Model\Post;
+use App\Repository\CommentRepository;
 use Twig\Environment;
 use App\router\Router;
-use Twig\Loader\FilesystemLoader;
 use App\Repository\PostRepository;
 
 
 class PostController
 {
-    public Environment $twig;
+    public function __construct(
+        public Environment $twig
+    ) {}
 
-    public function __construct(FilesystemLoader $loader)
-    {
-        $this->twig = new Environment($loader);
-    }
     public function showPostPage(int $id): void
     {
         $postRepository = new PostRepository();
         $onePost = $postRepository->getOnePost($id);
-        // var_dump($onePost);die;
+
+        if (count($_POST) !== 0) {
+            $createComment = new Comment();
+
+            $createComment->setContent($_POST["comment"]);
+
+            $commentRepository = new CommentRepository();
+            $commentRepository->createComment($createComment, $id);
+        }
+
+        $commentRepository = new CommentRepository();
+        $commentArray = $commentRepository->getValidatedCommentByPostId($id);
 
         $this->twig->display('pages/post.html.twig', [
             "root_directory" => Router::ROOT_DIRECTORY,
             "root_image" => Router::ROOT_IMAGE,
-            "post" => $onePost
+            "post" => $onePost,
+            "comments" => $commentArray,
+            "isAdmin" => $_SESSION["isAdmin"] ?? false,
+            "session" => $_SESSION,
         ]);
     }
     public function showPostsPage()
@@ -36,7 +49,9 @@ class PostController
         $this->twig->display('pages/posts.html.twig', [
             "root_directory" => Router::ROOT_DIRECTORY,
             "root_image" => Router::ROOT_IMAGE,
-            "posts" => $postArray
+            "posts" => $postArray,
+            "isAdmin" => $_SESSION["isAdmin"] ?? false,
+            "session" => $_SESSION,
         ]);
     }
 
@@ -59,6 +74,8 @@ class PostController
         } else {
             $this->twig->display('pages/createPost.html.twig', [
                 "root_directory" => Router::ROOT_DIRECTORY,
+                "isAdmin" => $_SESSION["isAdmin"] ?? false,
+                "session" => $_SESSION,
             ]);
         }
     }
@@ -81,6 +98,8 @@ class PostController
             $this->twig->display('pages/modifyPost.html.twig', [
                 "root_directory" => Router::ROOT_DIRECTORY,
                 "post" => $showData,
+                "isAdmin" => $_SESSION["isAdmin"] ?? false,
+                "session" => $_SESSION,
             ]);
         }
     }
@@ -93,7 +112,7 @@ class PostController
         header("Location:" . Router::ROOT_DIRECTORY . '?page=posts');
     }
 
-    public function isSavedImage($image): string
+    public function isSavedImage(array $image): string
     {
         $nameImage = $image["image"]["name"];
         move_uploaded_file($image["image"]["tmp_name"], __DIR__ . '/../image/upload/' . $nameImage);

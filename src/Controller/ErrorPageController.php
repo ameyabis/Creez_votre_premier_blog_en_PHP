@@ -1,26 +1,22 @@
 <?php
 namespace App\Controller;
 
-use App\Repository\PostRepository;
-use App\router\Router;
 use Twig\Environment;
+use App\router\Router;
 
-class HomePageController
+class ErrorPageController
 {
     public function __construct(
         public Environment $twig
     ) {}
-    public function showHomePage()
+    public function show404Page()
     {
-        $postRepository = new PostRepository();
-        $postArray = $postRepository->getLastPost();
-
-        $this->twig->display('pages/homepage.html.twig', [
+        $this->twig->display('pages/404page.html.twig', [
             "root_directory" => Router::ROOT_DIRECTORY,
             "root_image" => Router::ROOT_IMAGE,
-            "posts" => $postArray,
             "isAdmin" => $_SESSION["isAdmin"] ?? false,
             "session" => $_SESSION,
+            // "message" => $message
         ]);
     }
 }
