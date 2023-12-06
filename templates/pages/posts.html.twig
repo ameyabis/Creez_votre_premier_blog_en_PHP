@@ -1,0 +1,28 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+<body>
+    <div class="container mt-3">
+        <h1 class="d-flex justify-content-center">Projet</h1>
+        <div class="container d-flex flex-wrap justify-content-between">
+            {% for post in posts %}
+            <div class="card my-3" style="width: 20rem;">
+                <img src="{{ root_image~post.image }}" class="card-img-top" alt="Le début d'une passion">
+                <div class="card-body">
+                    <h2 class="card-title d-flex justify-content-center">{{ post.title }}</h2>
+                    <h3 class="card-subtitle d-flex justify-content-center">{{ post.chapo }}</h3>
+                    <p class="card-text text-justify">{{ post.description }}</p>
+                    <a href="?page=post&id={{ post.id }}" class="btn d-flex justify-content-center">Plus
+                        d'information</a>
+                    {% if isAdmin == true %}
+                        <a href="?page=modify&id={{ post.id }}"><i class="fa-regular fa-pen-to-square"></i></a>
+                        <a href="?page=delete&id={{ post.id }}"><i class="fa-solid fa-trash-can"></i></a>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+{% endblock body %}

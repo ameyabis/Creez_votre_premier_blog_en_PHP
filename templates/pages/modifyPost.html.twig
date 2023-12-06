@@ -1,0 +1,24 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<div class="container">
+    <div class="d-flex col-12 justify-content-center my-5">
+        <form method="post" action="?page=modify&id={{ post.id }}">
+            <label for="title">Titre :</label>
+            <input class="my-2 form-control" type="text" id="title" name="title" value="{{ post.title }}" required>
+
+            <label for="chapo">Chapo :</label>
+            <input class="my-2 form-control" type="text" id="chapo" name="chapo" value="{{ post.chapo }}" required>
+
+            <label for="description">Description :</label>
+            <input class="my-2 form-control" type="text" id="description" name="description" value="{{ post.description }}" required>
+
+            <label for="image">Image :</label>
+            <input class="my-2 form-control" type="file" id="image" name="image" value="{{ post.image }}"
+                accept="image/png, image/jpeg, image/jpg" required>
+
+            <input type="submit" class="btn my-2" value="Modifier">
+        </form>
+    </div>
+</div>
+{% endblock body %}

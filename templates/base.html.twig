@@ -20,7 +20,64 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/d42e8378e0.js" crossorigin="anonymous"></script>
-    {% block stylesheets %}{% endblock %}
+
+    {% block stylesheets %}
+    <style>
+        * {
+            color: #FFF;
+        }
+
+        body {
+            background-color: #35415E;
+        }
+
+        a {
+            color: #FFF;
+        }
+
+        .bg-color {
+            background-color: #031331;
+        }
+
+        nav {
+            background-color: #031331;
+        }
+
+        footer {
+            background-color: #031331;
+        }
+
+        .card {
+            background-color: #35415E;
+        }
+
+        .btn {
+            background-color: #031331;
+            color: #FFF;
+        }
+
+        .btn-primary {
+            background-color: #35415E;
+            border-color: #35415E;
+        }
+
+        .card-title {
+            color: #FFF;
+        }
+
+        .card-subtitle {
+            color: #FFF;
+        }
+
+        input {
+            color: #000;
+        }
+
+        textarea {
+            color: #000;
+        }
+    </style>
+    {% endblock %}
 
     {% block javascripts %}{% endblock %}
 </head>
